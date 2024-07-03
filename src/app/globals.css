@@ -3,10 +3,20 @@
 @tailwind utilities;
 
 :root {
+  --light-brown: #cd8948;
+  --deep-blue: #1e4870;
+  --light-blue: #1976d2;
 }
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+.box_bg {
+  background-image: url("/img/box_bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
