@@ -35,7 +35,11 @@ describe('Iniciar Sesion page - "/cuenta/iniciar_sesion"', () => {
       </AppRouterContext.Provider>
     );
 
-    expect(screen.getByText(/iniciar sesion/i));
+    expect(
+      screen.getByRole("heading", {
+        name: /iniciar sesion/i,
+      })
+    );
   });
 
   it("Tiene que tener los inputs y labels “email” y “contraseña”.", () => {
@@ -47,7 +51,7 @@ describe('Iniciar Sesion page - "/cuenta/iniciar_sesion"', () => {
     );
 
     expect(screen.getByText(/email/i));
-    expect(screen.getByText(/contraseña/i));
+    expect(screen.getAllByText(/contraseña/i));
   });
 
   it("Tiene que tener el boton de “iniciar sesion”.", () => {
@@ -88,7 +92,9 @@ describe('Iniciar Sesion page - "/cuenta/iniciar_sesion"', () => {
 
     const pushed = router.push;
 
-    expect(pushed).toHaveBeenCalledWith("/cuenta/registrarse");
+    expect(pushed).toHaveBeenCalledWith("/cuenta/registrarse", {
+      scroll: true,
+    });
   });
 
   it("El link de redir. A recuperar contraseña debe redireccionar a “/cuenta/recuperar_contraseña”.", async () => {
@@ -101,11 +107,28 @@ describe('Iniciar Sesion page - "/cuenta/iniciar_sesion"', () => {
 
     await userEvent.click(
       // Click en el link de recuperar contraseña
-      screen.getByRole("link", { name: /recuperar contraseña/i })
+      screen.getByRole("link", { name: /recuperar contrase\ña/i })
     );
 
     const pushed = router.push;
 
-    expect(pushed).toHaveBeenCalledWith("/cuenta/recuperar_contraseña");
+    expect(pushed).toHaveBeenCalledWith("/cuenta/recuperar_contraseña", {
+      scroll: true,
+    });
+  });
+
+  it("Tiene que tener el boton de “iniciar sesion” con google", () => {
+    const router = createMockRouter({});
+    render(
+      <AppRouterContext.Provider value={router}>
+        <IniciarSesion />
+      </AppRouterContext.Provider>
+    );
+
+    expect(
+      screen.getByRole("button", {
+        name: /iniciar sesion con google/i,
+      })
+    );
   });
 });
