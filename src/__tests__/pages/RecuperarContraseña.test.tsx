@@ -86,7 +86,9 @@ describe('Recuperar Contraseña page - "/cuenta/recuperar_contraseña"', () => {
 
     const pushed = router.push;
 
-    expect(pushed).toHaveBeenCalledWith("/cuenta/iniciar_sesion");
+    expect(pushed).toHaveBeenCalledWith("/cuenta/iniciar_sesion", {
+      scroll: true,
+    });
   });
 
   it("Despues de que el boton es presionado: tiene que tener el texto “Hemos enviado un correo electrónico”.", () => {

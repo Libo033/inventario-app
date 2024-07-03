@@ -88,6 +88,8 @@ describe('Registrarse page - "/cuenta/registrarse"', () => {
 
     const pushed = router.push;
 
-    expect(pushed).toHaveBeenCalledWith("/cuenta/iniciar_sesion");
+    expect(pushed).toHaveBeenCalledWith("/cuenta/iniciar_sesion", {
+      scroll: true,
+    });
   });
 });

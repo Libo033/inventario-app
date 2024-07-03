@@ -75,7 +75,9 @@ describe('Home Page - "/"', () => {
 
     const pushed = router.push;
 
-    expect(pushed).toHaveBeenCalledWith("/inventario/nuevo");
+    expect(pushed).toHaveBeenCalledWith("/inventario/nuevo", {
+      scroll: true,
+    });
   });
 
   it("Tiene que tener el boton “unirse a inventario”.", () => {
@@ -111,7 +113,9 @@ describe('Home Page - "/"', () => {
 
     const pushed = router.push;
 
-    expect(pushed).toHaveBeenCalledWith("/inventario/unirse");
+    expect(pushed).toHaveBeenCalledWith("/inventario/unirse", {
+      scroll: true,
+    });
   });
 
   it("Tiene que mostrar los inventarios en los que se encuentra.", () => {
